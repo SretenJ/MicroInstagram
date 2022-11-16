@@ -1,0 +1,48 @@
+<div [formGroup]="form" (ngSubmit) = "onSubmit(form.value)" class=" vertical-group " >
+  <div class="horizontal-group">
+    <label>Album Id:</label>
+    <br>
+    <mat-form-field [attr.aria-label]="'albumId'">
+      <input name="albumId" matInput type="number"  formControlName="albumId" value="{{photo.albumId}}" >
+    </mat-form-field>
+
+
+  <div class="horizontal-group ">
+    <label>Id:</label>
+    <br>
+    <mat-form-field  [style.width]="'fit-content'"  [attr.aria-label]="'id'">
+      <input name="id" matInput type="number"  formControlName="id" value="{{photo.id}}" >
+    </mat-form-field>
+  </div>
+    <div style="float:right;padding-top: 10px">
+      <img mat-card-image matCardImageLarge src="{{photo.thumbnailUrl}}">
+    </div>
+
+  <div class="horizontal-group ">
+    <label class="mat-background-primary">Title:</label>
+    <br>
+    <mat-form-field style="width: 70%" [attr.aria-label]="'title'">
+      <input name="title"  matInput type="text"  formControlName="title" value="{{photo.title}}"  >
+    </mat-form-field>
+  </div>
+
+  <div class="horizontal-group">
+    <label>Url:</label>
+    <br>
+    <mat-form-field style="width: 50%" [attr.aria-label]="'url'">
+      <input name="url" matInput type="text"  formControlName="url" value="{{photo.url}}"  >
+    </mat-form-field>
+  </div>
+
+  <div class="horizontal-group">
+    <label>Thumbnail Url:</label>
+    <br>
+    <mat-form-field style="width: 50%" [attr.aria-label]="'thumbnailUrl'" >
+      <input name="thumbnailUrl" matInput type="text" value="{{photo.thumbnailUrl}}" formControlName="thumbnailUrl"    >
+    </mat-form-field>
+  </div>
+    <button mat-button style="float: right" (click)="onSubmit(form.value,'DELETE')">DELETE</button>
+  <button class="btn-danger" style="float: right" type="button" mat-raised-button mat-dialog-close [attr.aria-label]="'Cancel'">Cancel</button>
+  <button class="mat-stroked-button mat-active btn btn-success" style="background-color: forestgreen;float: left" type="button" mat-raised-button mat-dialog-close (click)="onSubmit(form.value,'EDIT')" [attr.aria-label]="'Save'">Save</button>
+</div>
+</div>
