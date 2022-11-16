@@ -42,11 +42,13 @@ export class AppComponent implements OnInit{
     let p = data as Photo
     let index = this.photos.findIndex(d=>d.id == data.id)
     this.photos[index] = p
+    this.photosService.putPhoto(data)
   }
 
   addData(data:Photo):void
   {
     this.photos.unshift(data)
+    this.photosService.postPhoto(data)
   }
 
   openDialog(photo:Photo): void {
