@@ -41,8 +41,8 @@
       <input name="thumbnailUrl" matInput type="text" value="{{photo.thumbnailUrl}}" formControlName="thumbnailUrl"    >
     </mat-form-field>
   </div>
-    <button mat-button style="float: right" (click)="onSubmit(form.value,'DELETE')">DELETE</button>
-  <button class="btn-danger" style="float: right" type="button" mat-raised-button mat-dialog-close [attr.aria-label]="'Cancel'">Cancel</button>
-  <button class="mat-stroked-button mat-active btn btn-success" style="background-color: forestgreen;float: left" type="button" mat-raised-button mat-dialog-close (click)="onSubmit(form.value,'EDIT')" [attr.aria-label]="'Save'">Save</button>
+    <button mat-button style="float: right" (click)="openConfirmationDialog(form.value,'DELETE')">DELETE</button>
+  <button class="btn-danger" style="float: right" type="button" mat-raised-button (click)="openConfirmationDialog(form.value,'CANCEL')" [attr.aria-label]="'Cancel'">Cancel</button>
+  <button class="mat-stroked-button mat-active btn btn-success" style="background-color: forestgreen;float: left" type="button" mat-raised-button (click)="openConfirmationDialog(form.value,'EDIT')" [attr.aria-label]="'Save'">Save</button>
 </div>
 </div>

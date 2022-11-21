@@ -3,7 +3,7 @@
     <label>Album Id:</label>
     <br>
     <mat-form-field [attr.aria-label]="'albumId'">
-      <input name="albumId" matInput type="number"  formControlName="albumId"  >
+      <input id="albumId" name="albumId" matInput type="number"  formControlName="albumId"  >
     </mat-form-field>
   </div>
 
@@ -11,14 +11,14 @@
     <label>Id:</label>
     <br>
     <mat-form-field  [style.width]="'fit-content'"  [attr.aria-label]="'id'">
-      <input name="id" matInput type="number"  formControlName="id"  >
+      <input id= "id" name="id" matInput type="number"  formControlName="id"  >
     </mat-form-field>
   </div>
 
   <div class="horizontal-group ">
     <label class="mat-background-primary">Title:</label>
     <mat-form-field [style.width.%]="100" [attr.aria-label]="'title'" style="width: fit-content">
-      <input name="title" matInput type="text"  formControlName="title"   >
+      <input id= "title" name="title" matInput type="text"  formControlName="title"   >
     </mat-form-field>
   </div>
 
@@ -26,7 +26,7 @@
     <label>Url:</label>
     <br>
     <mat-form-field [style.width.%]="50" [attr.aria-label]="'url'">
-      <input name="url" matInput type="text"  formControlName="url"   >
+      <input id= "url" name="url" matInput type="text"  formControlName="url"   >
     </mat-form-field>
   </div>
 
@@ -34,11 +34,13 @@
     <label>Thumbnail Url:</label>`
     <br>
     <mat-form-field [style.width.%]="50" [attr.aria-label]="'thumbnailUrl'" >
-      <input name="thumbnailUrl" matInput type="text"  formControlName="thumbnailUrl">
+      <input id= "thumbnailUrl" name="thumbnailUrl" matInput type="text"  formControlName="thumbnailUrl">
     </mat-form-field>
 
   </div>
-  <button class="btn-danger" style="right: auto" type="button" mat-raised-button mat-dialog-close [attr.aria-label]="'Cancel'">Cancel</button>
-  <button class="mat-stroked-button mat-active btn btn-success" style="color: forestgreen" type="button" mat-raised-button mat-dialog-close (click)="onSubmit(form.value)" [attr.aria-label]="'Save'">Save</button>
+  <mat-dialog-actions>
+  <button class="btn-danger" style="right: auto" type="button" mat-raised-button mat-dialog-close="true" [attr.aria-label]="'Cancel'">Cancel</button>
+  <button class="mat-stroked-button mat-active btn btn-success" style="color: forestgreen" type="button" mat-raised-button [disabled]="!form.valid" (click)="openConfirmationDialog(form.value)" [attr.aria-label]="'Save'">Save</button>
+  </mat-dialog-actions>
 </div>
 

@@ -18,16 +18,20 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
+import { MatSnackBarModule} from "@angular/material/snack-bar";
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EditComponentDialogComponent,
-    AddDialogComponent
+    AddDialogComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,
+    MatSnackBarModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -42,7 +46,6 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-
   ],
   providers: [PhotoService,AppComponent],
   bootstrap: [AppComponent]

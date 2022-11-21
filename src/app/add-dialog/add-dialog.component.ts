@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {PhotoService} from "../photo.service";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Photo} from "../Models/photo";
+import {ConfirmationDialogComponent} from "../confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: 'app-add-dialog',
@@ -12,11 +13,13 @@ import {Photo} from "../Models/photo";
 export class AddDialogComponent implements OnInit {
   form: FormGroup;
 
+  confirmDialogRef: MatDialogRef<ConfirmationDialogComponent>;
 
   constructor(
     private service:PhotoService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<AddDialogComponent>,
+    public dialog:MatDialog,
   ) {
   }
 
@@ -34,7 +37,6 @@ export class AddDialogComponent implements OnInit {
   }
 
   onSubmit(data:any) {
-
     this.closeDialog(data as Photo)
 
   }
@@ -45,6 +47,19 @@ export class AddDialogComponent implements OnInit {
       {
         photo:data
       });
+  }
+
+  openConfirmationDialog(data?:Photo) {
+    this.confirmDialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      disableClose: false
+    });
+    this.confirmDialogRef.componentInstance.message = "Are you sure you want to add a new entry?"
+
+    this.confirmDialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.onSubmit(data)
+      }
+    });
   }
 
 }
